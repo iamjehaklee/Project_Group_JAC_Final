@@ -11,6 +11,10 @@ def one_rep_max(input_weight, input_reps):
 
 #Make the Wendlers 5/3/1 Weightlifting Program FROM https://www.t-nation.com/workouts/531-how-to-build-pure-strength
 
+"""
+The first four weeks calculates theset weights for the sets. 
+"""
+
 class week1:
     def set_1(one_rep_max):
         set_1 = one_rep_max * 0.65
@@ -56,6 +60,9 @@ class week4:
         return set_3
 
 def open_file(filename):
+    """
+    This opens the pickle file and returns the max lifts as a dictionary. 
+    """
     input_file = open(filename,'rb')
     max_lifts = pickle.load(input_file)
     input_file.close()

@@ -10,6 +10,12 @@ app.config['DEBUG'] = True
 
 @app.route('/', methods=['GET', 'POST'])
 def create_file():
+    """
+    This function will first see if a pickle file already exists. If it does, then it will load the user 
+    to the workout overview page. If it does not however, it will ask the user to input their 
+    weights and reps. Once that happens, it will save their max weights as a dictionary into a pickle file and 
+    redirect the user to the workout overview page. 
+    """
     filename = 'user_lift'
     if not os.path.exists(filename+'.pickle'):
         if request.method == 'POST':
@@ -44,6 +50,10 @@ def create_file():
         return render_template('index.htm') 
     else:
         return render_template('workouts.htm')
+
+"""
+All the code below builds out the web links. 
+"""
 
 @app.route('/workouts.htm')
 def workouts():
