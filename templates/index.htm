@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+
+<html> 
+
+  <head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+	<title>LIFiTHome</title>
+
+
+	<style type="text/css">
+@font-face {
+    font-family: nice;
+    src: url(Champagne_Limousines.ttf);
+}
+@font-face {
+    font-family: Logo;
+    src: url(Aldo_PC.ttf);
+}
+body{font-family:nice}
+  body#background {
+  background: url('http://www.myfreetextures.com/wp-content/uploads/2011/06/brushedmetal103.jpg') no-repeat 50% 50% fixed; 
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+}
+.trans {text-align:center;
+  background-color:white; opacity:1;
+	padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    padding-left:10px;
+    width:50%;
+    margin:auto;
+    }
+.trans2 {background-color:#8FE3FF;
+	padding-top: 10px;
+    padding-bottom: 20px;
+    ;
+    font-size:12pt;}
+  h1{text-align:center; color:navy
+  ;margin:0;font-size:18pt;}
+  .input{text-align:center
+; font-size:16pt
+;}
+.trans3{
+  font-family:Logo;
+  text-align:center;
+  color:white;
+}
+h2{text-align:center}
+.inp{height:30px; width:100px;text-align:center;font-size:8pt;background-color:white;color:black;opacity:1;}
+
+.log{font-size:30pt;margin:2}
+.button-link {
+    padding: 5px 10px;
+    background: #8FE3FF;
+    color: black;
+    font-family:nice;
+    font-size:14pt;
+}
+p {
+  margin: .75em;
+}
+
+  </style>
+
+	
+  </head>
+  
+ 
+<body id="background">
+
+    <div class="trans2">
+      <h1 class="log"><span class="trans3">LIFiT</span></h1>
+    <h1><a href="/">Home</a>
+    <a href="workouts.htm">Workouts</a></h1>
+    </div>
+<div class="trans">
+
+  <h1>1 Rep Max Calculator</h1>
+	
+	<form method="POST" action="" name = "calc">
+	
+		<div class="input">
+		<p>Bench Press<p>
+		<input placeholder="Number of Reps" class="inp" type= "text" name="reps1" maxlength="70"/>
+	<input placeholder="Weight" class="inp" type= "text" name="weight1" maxlength="70"/>
+    </p>
+
+		<p>Military Press<p>
+		<input placeholder="Number of Reps" class="inp" type= "text" name="reps2" maxlength="70"/>
+	<input placeholder="Weight" class="inp" type= "text" name="weight2" maxlength="70"/>
+    </p>
+
+		<p>Squat<p>
+		<input placeholder="Number of Reps" class="inp" type= "text" name="reps3" maxlength="70"/>
+	<input placeholder="Weight" class="inp" type= "text" name="weight3" maxlength="70"/>
+    </p>
+    <p>Deadlift<p>
+		<input placeholder="Number of Reps" class="inp" type= "text" name="reps4" maxlength="70"/>
+	<input placeholder="Weight" class="inp" type= "text" name="weight4" maxlength="70"/>
+    </p>
+</div>
+
+	<table align=center>
+		<tr><td><button onclick="window.location.href='/'" class="button-link" type="submit">SUBMIT</button>
+    </td>
+		<td><input class="button-link" type="Reset" value="RESET" name="Reset" onclick/></td></tr>
+		
+</table>
+
+		
+</form>
+
+</div>
+
+ 
+</body>
+</html>
