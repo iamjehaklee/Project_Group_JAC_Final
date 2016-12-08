@@ -1,55 +1,53 @@
 from calculations import one_rep_max, week1, week2, week3, week4, open_file
 from flask import Flask, render_template, request, redirect, url_for
-import pickle
-import os
+import pickle, os, os.path
 
 app = Flask(__name__)
 
 app.config['DEBUG'] = True
-
 
 #post getting user input // get it will render the html 
 
 @app.route('/', methods=['GET', 'POST'])
 def create_file():
     filename = 'user_lift'
-    if request.method == 'POST':
-        #Input weights from user 
-        bench_weight = int(request.form['weight1']) #fill in
-        bench_reps = int(request.form['reps1']) #fill in
-        military_weight = int(request.form['weight2']) #fill in
-        military_reps = int(request.form['reps2']) #fill in
-        squat_weight = int(request.form['weight3']) #fill in
-        squat_reps = int(request.form['reps3']) #fill in
-        deadlift_weight = int(request.form['weight4']) #fill in 
-        deadlift_reps = int(request.form['reps4'])   #fill in 
+    if not os.path.exists(filename+'.pickle'):
+        if request.method == 'POST':
+            #Input weights from user 
+            bench_weight = int(request.form['weight1']) #fill in
+            bench_reps = int(request.form['reps1']) #fill in
+            military_weight = int(request.form['weight2']) #fill in
+            military_reps = int(request.form['reps2']) #fill in
+            squat_weight = int(request.form['weight3']) #fill in
+            squat_reps = int(request.form['reps3']) #fill in
+            deadlift_weight = int(request.form['weight4']) #fill in 
+            deadlift_reps = int(request.form['reps4'])   #fill in 
 
-        #Outputs max for user 
-        bench_max_weight = one_rep_max(bench_weight, bench_reps)  
-        military_max_weight = one_rep_max(military_weight, military_reps)
-        squat_max_weight = one_rep_max(squat_weight, squat_reps)
-        deadlift_max_weight = one_rep_max(deadlift_weight, deadlift_reps)
+            #Outputs max for user 
+            bench_max_weight = one_rep_max(bench_weight, bench_reps)  
+            military_max_weight = one_rep_max(military_weight, military_reps)
+            squat_max_weight = one_rep_max(squat_weight, squat_reps)
+            deadlift_max_weight = one_rep_max(deadlift_weight, deadlift_reps)
 
-        total_max_lifts = {} 
+            total_max_lifts = {} 
 
-        total_max_lifts['bench'] = bench_max_weight
-        total_max_lifts['military'] = military_max_weight
-        total_max_lifts['squat'] = squat_max_weight
-        total_max_lifts['deadlift'] = deadlift_max_weight
-        filename += '.pickle'
-        # if os.path.exists(filename):
-        f = open(filename,'wb')
-        pickle.dump(total_max_lifts,f)     
-        f.close()
+            total_max_lifts['bench'] = bench_max_weight
+            total_max_lifts['military'] = military_max_weight
+            total_max_lifts['squat'] = squat_max_weight
+            total_max_lifts['deadlift'] = deadlift_max_weight
+            filename += '.pickle'
+            # if os.path.exists(filename):
+            f = open(filename,'wb')
+            pickle.dump(total_max_lifts,f)     
+            f.close()
+            return render_template('workouts.htm')
+        return render_template('index.htm') 
+    else:
         return render_template('workouts.htm')
-    return render_template('index.htm')   
 
 @app.route('/workouts.htm')
 def workouts():
     return render_template('workouts.htm')
-# @app.route('/index.htm')
-# def index1():
-#     return render_template('index.htm')
 @app.route('/week1.htm')
 def week1():
     return render_template('week1.htm')
